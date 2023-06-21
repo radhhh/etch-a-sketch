@@ -1,0 +1,21 @@
+*{
+    font-family: sans-serif;
+}
+
+#interface{
+    text-align: center;
+}
+
+#input{
+    margin: 15px 4px;
+}
+
+#input > input{
+    width: 80px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#x{
+    display: inline;
+}
