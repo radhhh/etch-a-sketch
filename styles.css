@@ -27,14 +27,28 @@
     display: inline;
 }
 
+#grid{
+    margin: 15px auto 0px auto;
+    margin-top: 15px;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1;
+}
+
 .row{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .column{
-    height: 30px;
     width: 30px;
-    border: red solid 2px;
+    aspect-ratio: 1;
+    border: black solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hovered{

@@ -3,6 +3,7 @@ const colInput = document.querySelector('#colsize');
 const playButton = document.querySelector('#play');
 const errorSentence = document.querySelector('#error');
 const maindocs = document.querySelector('#container');
+let lightness = 100;
 
 function checkValid(rowSize, colSize){
     console.log(rowSize, colSize);
@@ -15,11 +16,18 @@ function checkValid(rowSize, colSize){
     return false;
 }
 
+function generateColor(){
+    if(lightness > 0) lightness -= 4;
+    return `hsl(${Math.floor(Math.random()*360)}, 
+    ${Math.floor(Math.random()*100)}%, ${lightness}%)`;
+}
+
 playButton.addEventListener('click', () => {
     const prevGrid = document.querySelector('#grid');
     if(prevGrid != null){
         maindocs.removeChild(prevGrid);
     }
+    lightness = 100;
     let rowSize = parseInt(rowInput.value);
     let colSize = parseInt(colInput.value);
     if(!checkValid(rowSize, colSize)) return;
@@ -33,10 +41,10 @@ playButton.addEventListener('click', () => {
             const currentCol = document.createElement('div');
             currentCol.classList.add('column');
             currentCol.addEventListener('mouseenter', () => {
-                currentCol.classList.add('hovered');
+                currentCol.style.backgroundColor = generateColor();
             })
             currentCol.addEventListener('mouseleave', () => {
-                currentCol.classList.remove('hovered');
+                currentCol.style.backgroundColor = 'white';
             })
             currentRow.appendChild(currentCol);
         }
