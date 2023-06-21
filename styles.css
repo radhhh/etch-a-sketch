@@ -3,7 +3,7 @@
     /* border: red solid 2px; */
 }
 
-#interface{
+#container{
     text-align: center;
 }
 
@@ -27,10 +27,14 @@
     display: inline;
 }
 
+.row{
+    display: flex;
+}
+
 .column{
-    height: 15px;
-    width: 15px;
-    background-color: black;
+    height: 30px;
+    width: 30px;
+    border: red solid 2px;
 }
 
 .hovered{

@@ -16,11 +16,16 @@ function checkValid(rowSize, colSize){
 }
 
 playButton.addEventListener('click', () => {
+    const prevGrid = document.querySelector('#grid');
+    if(prevGrid != null){
+        maindocs.removeChild(prevGrid);
+    }
     let rowSize = parseInt(rowInput.value);
     let colSize = parseInt(colInput.value);
     if(!checkValid(rowSize, colSize)) return;
     console.log('valid');
     const currentGrid = document.createElement('div');
+    currentGrid.setAttribute('id', 'grid');
     for(let i = 0; i < rowSize; i++){
         const currentRow = document.createElement('div');
         currentRow.classList.add('row');
