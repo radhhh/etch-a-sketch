@@ -17,9 +17,7 @@ function checkValid(rowSize, colSize){
 }
 
 function generateColor(){
-    if(lightness > 0) lightness -= 1;
-    return `hsl(${Math.floor(Math.random()*360)}, 
-    ${Math.floor(Math.random()*100)}%, ${lightness}%)`;
+    return "#" + Math.floor(Math.random()*16777215).toString(16);
 }
 
 playButton.addEventListener('click', () => {
@@ -30,18 +28,28 @@ playButton.addEventListener('click', () => {
     lightness = 100;
     let rowSize = parseInt(rowInput.value);
     let colSize = parseInt(colInput.value);
+    let activeDrawing = false;
     if(!checkValid(rowSize, colSize)) return;
     console.log('valid');
     const currentGrid = document.createElement('div');
     currentGrid.setAttribute('id', 'grid');
+    currentGrid.addEventListener('mousedown', () => {
+        activeDrawing = true;
+    })
+    currentGrid.addEventListener('mouseup', () => {
+        activeDrawing = false;
+    })
     for(let i = 0; i < rowSize; i++){
         const currentRow = document.createElement('div');
         currentRow.classList.add('row');
         for(let j = 0; j < colSize; j++){
             const currentCol = document.createElement('div');
             currentCol.classList.add('column');
+            
             currentCol.addEventListener('mouseenter', () => {
-                currentCol.style.backgroundColor = generateColor();
+                if(activeDrawing){
+                    currentCol.style.backgroundColor = generateColor();
+                }
             })
             currentRow.appendChild(currentCol);
         }
