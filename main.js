@@ -17,7 +17,7 @@ function checkValid(rowSize, colSize){
 }
 
 function generateColor(){
-    if(lightness > 0) lightness -= 4;
+    if(lightness > 0) lightness -= 1;
     return `hsl(${Math.floor(Math.random()*360)}, 
     ${Math.floor(Math.random()*100)}%, ${lightness}%)`;
 }
@@ -42,9 +42,6 @@ playButton.addEventListener('click', () => {
             currentCol.classList.add('column');
             currentCol.addEventListener('mouseenter', () => {
                 currentCol.style.backgroundColor = generateColor();
-            })
-            currentCol.addEventListener('mouseleave', () => {
-                currentCol.style.backgroundColor = 'white';
             })
             currentRow.appendChild(currentCol);
         }
